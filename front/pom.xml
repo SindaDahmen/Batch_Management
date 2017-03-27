@@ -1,0 +1,45 @@
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>front</artifactId>
+	<packaging>war</packaging>
+
+	<!-- <parent> <groupId>batchmanagement</groupId> <artifactId>Batch_Management</artifactId> 
+		<version>1.0.1-SNAPSHOT</version> </parent> -->
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.1.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<blurredVersion>2.0.x</blurredVersion>
+		<project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
+		<project.output.encoding>UTF-8</project.output.encoding>
+		<org.springframework.version>3.2.6.RELEASE</org.springframework.version>
+		<org.spring.ws.version>2.0.0.RELEASE</org.spring.ws.version>
+		<cxf.version>2.7.8</cxf.version>
+		<swagger.version>1.5.10</swagger.version>
+		<host />
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+	</dependencies>
+</project>
