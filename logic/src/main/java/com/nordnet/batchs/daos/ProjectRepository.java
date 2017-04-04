@@ -1,11 +1,12 @@
 
-
 package com.nordnet.batchs.daos;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.nordnet.batchs.entities.Project;
 
-public interface ProjectRepository  extends CrudRepository<Project, Integer>  {
+@Repository
+public interface ProjectRepository extends CrudRepository<Project, Integer> {
 
 }

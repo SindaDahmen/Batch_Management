@@ -7,23 +7,39 @@ import com.nordnet.batchs.entities.Batch;
 
 public interface BatchService {
 
-	public List<BatchDTO> listBatchesByProject(int projectId);
+	List<BatchDTO> listBatchesByProject(int projectId);
 
-	public List<BatchDTO> listBatchs();
+	List<BatchDTO> listBatchs();
 
-	public BatchDTO listBatchesById(int batchId);
+	BatchDTO listBatchesById(int batchId);
 
-	public Batch createBatch(BatchDTO batchdto, int id);
+	/**
+	 * 
+	 * @param batchDTO
+	 * @return
+	 */
+	BatchDTO createBatch(BatchDTO batchDTO);
 
-	public boolean deleteBatchById(int batchId);
+	/**
+	 * 
+	 * -- * @param batchId
+	 * 
+	 * @return
+	 */
+	boolean deleteBatchById(int batchId);
 
-	public Batch updateBatch(BatchDTO batchDTO, int batchId);
+	/**
+	 * 
+	 * @param batchDTO
+	 * @return
+	 */
+	BatchDTO updateBatch(BatchDTO batchDTO);
 
-	public List<Batch> convertBatchsDTOToBatch(List<BatchDTO> batchsDTO);
+	List<Batch> convertBatchsDTOToBatch(List<BatchDTO> batchsDTO);
 
-	public Batch convertBatchDTOToBatch(BatchDTO batchDTO);
+	Batch convertBatchDTOToBatch(BatchDTO batchDTO);
 
-	public BatchDTO convertBatchToBatchDTO(Batch batch);
+	BatchDTO convertBatchToBatchDTO(Batch batch);
 
-	public List<BatchDTO> convertBatchsToBatchDTOS(List<Batch> batchs);
+	List<BatchDTO> convertBatchsToBatchDTOS(List<Batch> batchs);
 }

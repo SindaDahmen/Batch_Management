@@ -7,17 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nordnet.batchs.daos.BatchRepository;
-import com.nordnet.batchs.daos.ProjectRepository;
 import com.nordnet.batchs.dtos.BatchDTO;
+import com.nordnet.batchs.dtos.ProjectDTO;
 import com.nordnet.batchs.entities.Batch;
 import com.nordnet.batchs.entities.Project;
 import com.nordnet.batchs.services.BatchService;
+import com.nordnet.batchs.services.ProjectService;
 
 @Service("BatchService")
 public class BatchServiceImpl implements BatchService {
 
 	@Autowired
 	private BatchRepository batchRepository;
+
+	@Autowired
+	private ProjectService projectService;
 
 	@Override
 	public List<BatchDTO> listBatchesByProject(int projectId) {
@@ -40,25 +44,11 @@ public class BatchServiceImpl implements BatchService {
 		return batch;
 	}
 
-	@Autowired
-	private ProjectRepository projectRepository;
-
 	@Override
-	public Batch createBatch(BatchDTO batchdto, int projectId) {
-
-		Project project = projectRepository.findOne(projectId);
+	public BatchDTO createBatch(BatchDTO batchdto) {
 		Batch batch = convertBatchDTOToBatch(batchdto);
-		batch.setDescription(batchdto.getDescription());
-		batch.setHttpVerb(batchdto.getHttpVerb());
-		batch.setName(batchdto.getName());
-		batch.setParameters(batchdto.getParameters());
-		batch.setUrl(batchdto.getUrl());
-		batch.setProject(project);
-
-		// Batch batch = convertBatchDTOToBatch(batchdto);
-
-		Batch bat = batchRepository.save(batch);
-		return bat;
+		Batch savedBatch = batchRepository.save(batch);
+		return convertBatchToBatchDTO(savedBatch);
 	}
 
 	@Override
@@ -69,18 +59,10 @@ public class BatchServiceImpl implements BatchService {
 	}
 
 	@Override
-	public Batch updateBatch(BatchDTO batchdto, int batchId) {
+	public BatchDTO updateBatch(BatchDTO batchdto) {
 		Batch batch = convertBatchDTOToBatch(batchdto);
-		// batch.setProject(batch.getProject());
-
-		Batch bat = batchRepository.findOne(batchId);
-		bat.setDescription(batch.getDescription());
-		bat.setHttpVerb(batch.getHttpVerb());
-		bat.setName(batch.getName());
-		bat.setParameters(batch.getParameters());
-		bat.setUrl(batch.getUrl());
-		Batch b = batchRepository.save(bat);
-		return b;
+		Batch savedBatch = batchRepository.save(batch);
+		return convertBatchToBatchDTO(savedBatch);
 
 	}
 
@@ -116,9 +98,25 @@ public class BatchServiceImpl implements BatchService {
 		result.setName(batch.getName());
 		result.setParameters(batch.getParameters());
 		result.setUrl(batch.getUrl());
+		if (batch.getProject() != null) {
+			ProjectDTO projectDTO = convertProjectToProjectDTO(batch.getProject());
+			result.setProjectDTO(projectDTO);
 
+		}
 		return result;
+
 	}
+
+	private ProjectDTO convertProjectToProjectDTO(Project project) {
+		if (project == null) {
+			return null;
+		}
+		return projectService.convertProjectToProjectDTO(project);
+	}
+
+	/**
+	 * 
+	 */
 
 	public List<Batch> convertBatchsDTOToBatch(List<BatchDTO> batchsDTO) {
 		List<Batch> result = new ArrayList<Batch>();
@@ -143,8 +141,25 @@ public class BatchServiceImpl implements BatchService {
 		result.setName(batchDTO.getName());
 		result.setParameters(batchDTO.getParameters());
 		result.setUrl(batchDTO.getUrl());
+		if (batchDTO.getProjectDTO() != null) {
+			Project project = convertProjectDTOToProject(batchDTO.getProjectDTO());
+			result.setProject(project);
+		}
 
 		return result;
+	}
+
+	/**
+	 * 
+	 * @param projectDTO
+	 * @return
+	 */
+
+	private Project convertProjectDTOToProject(ProjectDTO projectDTO) {
+		if (projectDTO == null) {
+			return null;
+		}
+		return projectService.convertProjectDTOToProject(projectDTO);
 	}
 
 }

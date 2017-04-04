@@ -1,14 +1,12 @@
 package com.nordnet.batchs.dtos;
 
-import java.math.BigInteger;
-import java.sql.Timestamp;
 import java.util.Date;
 
 public class BatchJobExecutionDTO {
 
 	private Long jobExecutionId;
 
-	private Timestamp createTime;
+	private Date createTime;
 
 	private Date endTime;
 
@@ -18,17 +16,21 @@ public class BatchJobExecutionDTO {
 
 	private String jobConfigurationLocation;
 
-	private Timestamp lastUpdated;
+	private Date lastUpdated;
 
 	private Date startTime;
 
 	private String status;
 
-	private BigInteger version;
+	private Long version;
 
 	private BatchJobInstanceDTO batchJobInstanceDTO;
 
 	private BatchDTO batchDTO;
+
+	private BatchJobExecutionContextDTO batchJobExecutionContextDTO;
+
+	private BatchJobExecutionParamsDTO batchJobExecutionParamDTO;
 
 	public BatchJobExecutionDTO() {
 
@@ -42,11 +44,11 @@ public class BatchJobExecutionDTO {
 		this.jobExecutionId = jobExecutionId;
 	}
 
-	public Timestamp getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(Timestamp createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 
@@ -82,11 +84,11 @@ public class BatchJobExecutionDTO {
 		this.jobConfigurationLocation = jobConfigurationLocation;
 	}
 
-	public Timestamp getLastUpdated() {
+	public Date getLastUpdated() {
 		return lastUpdated;
 	}
 
-	public void setLastUpdated(Timestamp lastUpdated) {
+	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
 
@@ -106,11 +108,11 @@ public class BatchJobExecutionDTO {
 		this.status = status;
 	}
 
-	public BigInteger getVersion() {
+	public Long getVersion() {
 		return version;
 	}
 
-	public void setVersion(BigInteger version) {
+	public void setVersion(Long version) {
 		this.version = version;
 	}
 
@@ -128,6 +130,22 @@ public class BatchJobExecutionDTO {
 
 	public void setBatchDTO(BatchDTO batchDTO) {
 		this.batchDTO = batchDTO;
+	}
+
+	public BatchJobExecutionContextDTO getBatchJobExecutionContextDTO() {
+		return batchJobExecutionContextDTO;
+	}
+
+	public void setBatchJobExecutionContextDTO(BatchJobExecutionContextDTO batchJobExecutionContextDTO) {
+		this.batchJobExecutionContextDTO = batchJobExecutionContextDTO;
+	}
+
+	public BatchJobExecutionParamsDTO getBatchJobExecutionParamDTO() {
+		return batchJobExecutionParamDTO;
+	}
+
+	public void setBatchJobExecutionParamDTO(BatchJobExecutionParamsDTO batchJobExecutionParamDTO) {
+		this.batchJobExecutionParamDTO = batchJobExecutionParamDTO;
 	}
 
 }

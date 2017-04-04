@@ -1,21 +1,20 @@
 package com.nordnet.batchs.dtos;
 
-import java.math.BigInteger;
-import java.sql.Timestamp;
+import java.util.Date;
 
 public class BatchJobExecutionParamsDTO {
 
 	private Long jobExecutionId;
 
-	private Timestamp dateVal;
+	private Date dateVal;
 
 	private double doubleVal;
 
-	private String identifying;
+	private Character identifying;
 
 	private String keyName;
 
-	private BigInteger longVal;
+	private Long longVal;
 
 	private String stringVal;
 
@@ -35,11 +34,11 @@ public class BatchJobExecutionParamsDTO {
 		this.jobExecutionId = jobExecutionId;
 	}
 
-	public Timestamp getDateVal() {
+	public Date getDateVal() {
 		return dateVal;
 	}
 
-	public void setDateVal(Timestamp dateVal) {
+	public void setDateVal(Date dateVal) {
 		this.dateVal = dateVal;
 	}
 
@@ -51,11 +50,11 @@ public class BatchJobExecutionParamsDTO {
 		this.doubleVal = doubleVal;
 	}
 
-	public String getIdentifying() {
+	public Character getIdentifying() {
 		return identifying;
 	}
 
-	public void setIdentifying(String identifying) {
+	public void setIdentifying(Character identifying) {
 		this.identifying = identifying;
 	}
 
@@ -67,11 +66,11 @@ public class BatchJobExecutionParamsDTO {
 		this.keyName = keyName;
 	}
 
-	public BigInteger getLongVal() {
+	public Long getLongVal() {
 		return longVal;
 	}
 
-	public void setLongVal(BigInteger longVal) {
+	public void setLongVal(Long longVal) {
 		this.longVal = longVal;
 	}
 

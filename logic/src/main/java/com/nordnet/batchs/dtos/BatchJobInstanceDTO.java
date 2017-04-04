@@ -1,7 +1,5 @@
 package com.nordnet.batchs.dtos;
 
-import java.math.BigInteger;
-
 public class BatchJobInstanceDTO {
 
 	private Long jobInstanceId;
@@ -10,7 +8,7 @@ public class BatchJobInstanceDTO {
 
 	private String jobName;
 
-	private BigInteger version;
+	private Long version;
 
 	BatchJobExecutionDTO batchJobExecutionsDTO;
 
@@ -42,11 +40,11 @@ public class BatchJobInstanceDTO {
 		this.jobName = jobName;
 	}
 
-	public BigInteger getVersion() {
+	public Long getVersion() {
 		return version;
 	}
 
-	public void setVersion(BigInteger version) {
+	public void setVersion(Long version) {
 		this.version = version;
 	}
 

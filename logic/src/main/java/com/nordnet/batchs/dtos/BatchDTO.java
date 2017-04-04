@@ -2,7 +2,7 @@ package com.nordnet.batchs.dtos;
 
 public class BatchDTO {
 
-	private int id;
+	private Integer id;
 
 	private String description;
 
@@ -14,16 +14,16 @@ public class BatchDTO {
 
 	private String url;
 
-	private ProjectDTO project;
+	private ProjectDTO projectDTO;
 
 	public BatchDTO() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -67,11 +67,11 @@ public class BatchDTO {
 		this.url = url;
 	}
 
-	public ProjectDTO getProject() {
-		return project;
+	public ProjectDTO getProjectDTO() {
+		return projectDTO;
 	}
 
-	public void setProject(ProjectDTO project) {
-		this.project = project;
+	public void setProjectDTO(ProjectDTO projectDTO) {
+		this.projectDTO = projectDTO;
 	}
 }

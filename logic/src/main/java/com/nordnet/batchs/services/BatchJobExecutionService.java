@@ -1,11 +1,12 @@
 package com.nordnet.batchs.services;
 
+import com.nordnet.batchs.dtos.BatchJobExecutionDTO;
 import com.nordnet.batchs.entities.BatchJobExecution;
 
 public interface BatchJobExecutionService {
 
-	String createHistory();
+	BatchJobExecutionDTO createHistory(BatchJobExecutionDTO batchjobexecutiondto);
 
-	BatchJobExecution updateHistory(long id);
+	BatchJobExecution updateHistory(Long id);
 
 }

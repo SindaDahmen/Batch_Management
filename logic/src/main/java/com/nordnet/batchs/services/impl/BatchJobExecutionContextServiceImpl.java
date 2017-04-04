@@ -28,10 +28,15 @@ public class BatchJobExecutionContextServiceImpl implements BatchJobExecutionCon
 		}
 
 		BatchJobExecutionContext result = new BatchJobExecutionContext();
-		result.setJobExecutionId(batchjobexecutioncontextDTO.getJobExecutionId());
+
+		// result.setJobExecutionId(batchjobexecutioncontextDTO.getJobExecutionId());
+
 		result.setSerializedContext(batchjobexecutioncontextDTO.getSerializedContext());
+
 		result.setShortContext(batchjobexecutioncontextDTO.getShortContext());
+
 		batchJobExecutionContextRepository.save(result);
+
 		return result;
 	}
 
@@ -49,9 +54,10 @@ public class BatchJobExecutionContextServiceImpl implements BatchJobExecutionCon
 		}
 
 		BatchJobExecutionContextDTO result = new BatchJobExecutionContextDTO();
-		result.setJobExecutionId(batchJobExecutionContext.getJobExecutionId());
+		// result.setJobExecutionId(batchJobExecutionContext.getJobExecutionId());
 		result.setSerializedContext(batchJobExecutionContext.getSerializedContext());
 		result.setShortContext(batchJobExecutionContext.getShortContext());
+
 		return result;
 	}
 
