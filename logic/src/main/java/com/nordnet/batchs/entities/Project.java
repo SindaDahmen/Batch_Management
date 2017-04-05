@@ -15,9 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
 // import javax.persistence.Version;
 
 /**
@@ -119,8 +116,9 @@ public class Project {
 		this.beans = beans;
 	}
 
-	@Cascade(CascadeType.SAVE_UPDATE)
+	// @Cascade(CascadeType.SAVE_UPDATE)
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "project")
+	// @Cascade(CascadeType.SAVE_UPDATE)
 	public Set<Batch> getBatches() {
 		return this.batches;
 	}

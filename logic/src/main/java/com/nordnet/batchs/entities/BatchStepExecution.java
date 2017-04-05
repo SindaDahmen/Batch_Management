@@ -1,12 +1,16 @@
 package com.nordnet.batchs.entities;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 // Generated 24 mars 2017 10:30:00 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -80,6 +84,7 @@ public class BatchStepExecution implements java.io.Serializable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "STEP_EXECUTION_ID", unique = true, nullable = false)
 	public long getStepExecutionId() {
 		return this.stepExecutionId;
@@ -247,7 +252,8 @@ public class BatchStepExecution implements java.io.Serializable {
 		this.lastUpdated = lastUpdated;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "batchStepExecution")
+	// @Cascade(CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "batchStepExecution", cascade = CascadeType.ALL)
 	public BatchStepExecutionContext getBatchStepExecutionContext() {
 		return this.batchStepExecutionContext;
 	}

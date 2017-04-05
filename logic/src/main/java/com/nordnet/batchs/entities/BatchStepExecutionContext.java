@@ -47,7 +47,7 @@ public class BatchStepExecutionContext implements java.io.Serializable {
 	@GenericGenerator(name = "generator", strategy = "foreign", parameters = @Parameter(name = "property", value = "batchStepExecution"))
 	@Id
 	@GeneratedValue(generator = "generator")
-	@Column(name = "STEP_EXECUTION_ID", unique = true, nullable = false)
+	@Column(name = "STEP_EXECUTION_ID", unique = true)
 	public long getStepExecutionId() {
 		return this.stepExecutionId;
 	}

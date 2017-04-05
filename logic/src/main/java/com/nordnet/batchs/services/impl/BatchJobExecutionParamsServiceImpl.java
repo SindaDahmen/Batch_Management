@@ -35,7 +35,7 @@ public class BatchJobExecutionParamsServiceImpl implements BatchJobExecutionPara
 		result.setLongVal(batchjobexecutionparamsDTO.getLongVal());
 		result.setStringVal(batchjobexecutionparamsDTO.getStringVal());
 		result.setTypeCd(batchjobexecutionparamsDTO.getTypeCd());
-		batchJobExecutionParamsRepository.save(result);
+		// batchJobExecutionParamsRepository.save(result);
 		return result;
 	}
 

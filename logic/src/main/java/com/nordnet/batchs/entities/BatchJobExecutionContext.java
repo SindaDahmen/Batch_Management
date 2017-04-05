@@ -11,8 +11,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -58,7 +56,7 @@ public class BatchJobExecutionContext implements java.io.Serializable {
 		this.jobExecutionId = jobExecutionId;
 	}
 
-	@Cascade(CascadeType.ALL)
+	// @Cascade(CascadeType.ALL)
 	@OneToOne(fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
 	public BatchJobExecution getBatchJobExecution() {

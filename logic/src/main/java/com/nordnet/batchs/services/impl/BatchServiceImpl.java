@@ -23,12 +23,20 @@ public class BatchServiceImpl implements BatchService {
 	@Autowired
 	private ProjectService projectService;
 
+	/**
+	 * 
+	 */
+
 	@Override
 	public List<BatchDTO> listBatchesByProject(int projectId) {
 		List<Batch> batchs = this.batchRepository.findByProjectId(projectId);
 		List<BatchDTO> result = convertBatchsToBatchDTOS(batchs);
 		return result;
 	}
+
+	/**
+	 * 
+	 */
 
 	@Override
 	public List<BatchDTO> listBatchs() {
@@ -37,12 +45,20 @@ public class BatchServiceImpl implements BatchService {
 		return result;
 	}
 
+	/**
+	 * 
+	 */
+
 	@Override
 	public BatchDTO listBatchesById(int batchId) {
 		Batch bat = this.batchRepository.findOne(batchId);
 		BatchDTO batch = convertBatchToBatchDTO(bat);
 		return batch;
 	}
+
+	/**
+	 * 
+	 */
 
 	@Override
 	public BatchDTO createBatch(BatchDTO batchdto) {
@@ -51,12 +67,20 @@ public class BatchServiceImpl implements BatchService {
 		return convertBatchToBatchDTO(savedBatch);
 	}
 
+	/**
+	 * 
+	 */
+
 	@Override
 	public boolean deleteBatchById(int batchId) {
 		batchRepository.delete(batchId);
 		return true;
 
 	}
+
+	/**
+	 * 
+	 */
 
 	@Override
 	public BatchDTO updateBatch(BatchDTO batchdto) {
@@ -71,6 +95,7 @@ public class BatchServiceImpl implements BatchService {
 	 * @param batchs
 	 * @return
 	 */
+
 	public List<BatchDTO> convertBatchsToBatchDTOS(List<Batch> batchs) {
 		List<BatchDTO> result = new ArrayList<BatchDTO>();
 		for (Batch batch : batchs) {
@@ -87,6 +112,7 @@ public class BatchServiceImpl implements BatchService {
 	 * @param batch
 	 * @return
 	 */
+
 	public BatchDTO convertBatchToBatchDTO(Batch batch) {
 		if (batch == null) {
 			return null;
@@ -106,6 +132,12 @@ public class BatchServiceImpl implements BatchService {
 		return result;
 
 	}
+
+	/**
+	 * 
+	 * @param project
+	 * @return
+	 */
 
 	private ProjectDTO convertProjectToProjectDTO(Project project) {
 		if (project == null) {
@@ -130,10 +162,15 @@ public class BatchServiceImpl implements BatchService {
 
 	}
 
+	/**
+	 * 
+	 */
+
 	public Batch convertBatchDTOToBatch(BatchDTO batchDTO) {
 		if (batchDTO == null) {
 			return null;
 		}
+
 		Batch result = new Batch();
 		result.setId(batchDTO.getId());
 		result.setHttpVerb(batchDTO.getHttpVerb());
@@ -144,6 +181,8 @@ public class BatchServiceImpl implements BatchService {
 		if (batchDTO.getProjectDTO() != null) {
 			Project project = convertProjectDTOToProject(batchDTO.getProjectDTO());
 			result.setProject(project);
+			// project.getBatches().add(result);
+
 		}
 
 		return result;

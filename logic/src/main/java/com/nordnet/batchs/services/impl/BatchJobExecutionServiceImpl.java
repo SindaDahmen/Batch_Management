@@ -7,10 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nordnet.batchs.daos.BatchJobExecutionContextRepository;
-import com.nordnet.batchs.daos.BatchJobExecutionParamsRepository;
 import com.nordnet.batchs.daos.BatchJobExecutionRepository;
-import com.nordnet.batchs.daos.BatchJobInstanceRepository;
 import com.nordnet.batchs.dtos.BatchJobExecutionContextDTO;
 import com.nordnet.batchs.dtos.BatchJobExecutionDTO;
 import com.nordnet.batchs.dtos.BatchJobExecutionParamsDTO;
@@ -29,12 +26,6 @@ public class BatchJobExecutionServiceImpl implements BatchJobExecutionService {
 
 	@Autowired
 	private BatchJobExecutionRepository batchJobExecutionRepository;
-	@Autowired
-	private BatchJobExecutionContextRepository batchJobExecutionContextRepository;
-	@Autowired
-	private BatchJobInstanceRepository batchJobInstanceRepository;
-	@Autowired
-	private BatchJobExecutionParamsRepository batchJobExecutionParamsRepository;
 
 	@Autowired
 	private BatchJobExecutionContextService batchJobExecutionContextService;
@@ -101,7 +92,7 @@ public class BatchJobExecutionServiceImpl implements BatchJobExecutionService {
 			batchJobExecutionParams.setJobExecutionId(batchjobexecution.getJobExecutionId());
 			BatchJobExecutionParamsDTO batchJobExecutionParamsDTO = convertBatchJobExecutionParamsToBatchJobExecutionParamsDTO(
 					batchjobexecution.getBatchJobExecutionParams());
-
+			batchJobExecutionParamsDTO.setJobExecutionId(batchjobexecution.getJobExecutionId());
 			result.setBatchJobExecutionParamDTO(batchJobExecutionParamsDTO);
 		}
 		// if (batchjobexecution.getBatchJobInstance() != null) {
@@ -243,34 +234,30 @@ public class BatchJobExecutionServiceImpl implements BatchJobExecutionService {
 
 			BatchJobExecutionContextDTO batchJobExecutionContextDTO = batchjobexecutionDTO
 					.getBatchJobExecutionContextDTO();
-
-			batchJobExecutionContextDTO.setJobExecutionId(batchjobexecutionDTO.getJobExecutionId());
-
 			BatchJobExecutionContext batchJobExecutionContext = convertBatchJobExecutionContextDTOToBatchJobExecutionContext(
 					batchJobExecutionContextDTO);
-
 			result.setBatchJobExecutionContext(batchJobExecutionContext);
+			batchJobExecutionContext.setBatchJobExecution(result);
+		}
+
+		if (batchjobexecutionDTO.getBatchJobExecutionParamDTO() != null) {
+
+			BatchJobExecutionParamsDTO batchJobExecutionParamsDTO = batchjobexecutionDTO.getBatchJobExecutionParamDTO();
+			BatchJobExecutionParams batchJobExecutionParams = convertBatchJobExecutionParamsDTOToBatchJobExecutionParams(
+					batchJobExecutionParamsDTO);
+			result.setBatchJobExecutionParams(batchJobExecutionParams);
+			batchJobExecutionParams.setBatchJobExecution(result);
 
 		}
 
-		// if (batchjobexecutionDTO.getBatchJobExecutionParamDTO() != null) {
-		// BatchJobExecutionParams batchJobExecutionParams =
-		// convertBatchJobExecutionParamsDTOToBatchJobExecutionParams(
-		// batchjobexecutionDTO.getBatchJobExecutionParamDTO());
-		// batchJobExecutionParams.setJobExecutionId(batchjobexecutionDTO.getJobExecutionId());
-		// result.setBatchJobExecutionParam(batchJobExecutionParams);
-		// batchJobExecutionParamsRepository.save(batchJobExecutionParams);
-		// }
-		//
 		// if (batchjobexecutionDTO.getBatchJobInstanceDTO() != null) {
 		// BatchJobInstance batchJobInstance =
 		// convertBatchJobInstanceDTOToBatchJobInstance(
 		// batchjobexecutionDTO.getBatchJobInstanceDTO());
 		// result.setBatchJobInstance(batchJobInstance);
 		//
+		//
 		// }
-
-		batchJobExecutionRepository.save(result);
 
 		return result;
 	}

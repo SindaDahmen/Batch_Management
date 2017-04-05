@@ -25,11 +25,11 @@ public class BatchJobInstanceServiceImpl implements BatchJobInstanceService {
 		}
 
 		BatchJobInstance result = new BatchJobInstance();
-		result.setJobInstanceId(batchJobInstanceDTO.getJobInstanceId());
+		// result.setJobInstanceId(batchJobInstanceDTO.getJobInstanceId());
 		result.setJobKey(batchJobInstanceDTO.getJobKey());
 		result.setJobName(batchJobInstanceDTO.getJobName());
 		result.setVersion(batchJobInstanceDTO.getVersion());
-		batchJobInstanceRepository.save(result);
+
 		return result;
 	}
 
@@ -44,7 +44,7 @@ public class BatchJobInstanceServiceImpl implements BatchJobInstanceService {
 		}
 
 		BatchJobInstanceDTO result = new BatchJobInstanceDTO();
-		result.setJobInstanceId(batchJobInstance.getJobInstanceId());
+		// result.setJobInstanceId(batchJobInstance.getJobInstanceId());
 		result.setJobKey(batchJobInstance.getJobKey());
 		result.setJobName(batchJobInstance.getJobName());
 		result.setVersion(batchJobInstance.getVersion());

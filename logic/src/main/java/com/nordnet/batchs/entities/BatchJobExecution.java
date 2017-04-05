@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -118,7 +119,7 @@ public class BatchJobExecution implements java.io.Serializable {
 		this.bean = bean;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "JOB_INSTANCE_ID")
 	public BatchJobInstance getBatchJobInstance() {
 		return this.batchJobInstance;
@@ -213,7 +214,7 @@ public class BatchJobExecution implements java.io.Serializable {
 		this.batchStepExecutions = batchStepExecutions;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "batchJobExecution")
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "batchJobExecution", cascade = CascadeType.ALL)
 	public BatchJobExecutionParams getBatchJobExecutionParams() {
 		return this.batchJobExecutionParams;
 	}
@@ -223,7 +224,7 @@ public class BatchJobExecution implements java.io.Serializable {
 	}
 
 	// @Cascade(CascadeType.ALL)
-	@OneToOne(fetch = FetchType.EAGER, mappedBy = "batchJobExecution")
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "batchJobExecution", cascade = CascadeType.ALL)
 	public BatchJobExecutionContext getBatchJobExecutionContext() {
 		return this.batchJobExecutionContext;
 	}

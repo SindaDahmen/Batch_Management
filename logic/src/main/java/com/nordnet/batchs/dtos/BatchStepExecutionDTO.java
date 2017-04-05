@@ -1,13 +1,13 @@
 package com.nordnet.batchs.dtos;
 
-import java.math.BigInteger;
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class BatchStepExecutionDTO {
 
 	private Long stepExecutionId;
 
-	private BigInteger commitCount;
+	private Long commitCount;
 
 	private Timestamp endTime;
 
@@ -15,17 +15,17 @@ public class BatchStepExecutionDTO {
 
 	private String exitMessage;
 
-	private BigInteger filterCount;
+	private Long filterCount;
 
-	private Timestamp lastUpdated;
+	private Date lastUpdated;
 
-	private BigInteger processSkipCount;
+	private Long processSkipCount;
 
-	private BigInteger readCount;
+	private Long readCount;
 
-	private BigInteger readSkipCount;
+	private Long readSkipCount;
 
-	private BigInteger rollbackCount;
+	private Long rollbackCount;
 
 	private Timestamp startTime;
 
@@ -33,13 +33,13 @@ public class BatchStepExecutionDTO {
 
 	private String stepName;
 
-	private BigInteger version;
+	private Long version;
 
-	private BigInteger writeCount;
+	private Long writeCount;
 
-	private BigInteger writeSkipCount;
+	private Long writeSkipCount;
 
-	private BatchJobExecutionDTO batchJobExecutionDTO;
+	// private BatchJobExecutionDTO batchJobExecutionDTO;
 
 	private BatchStepExecutionContextDTO batchStepExecutionContextDTO;
 
@@ -55,11 +55,11 @@ public class BatchStepExecutionDTO {
 		this.stepExecutionId = stepExecutionId;
 	}
 
-	public BigInteger getCommitCount() {
+	public Long getCommitCount() {
 		return commitCount;
 	}
 
-	public void setCommitCount(BigInteger commitCount) {
+	public void setCommitCount(Long commitCount) {
 		this.commitCount = commitCount;
 	}
 
@@ -87,51 +87,51 @@ public class BatchStepExecutionDTO {
 		this.exitMessage = exitMessage;
 	}
 
-	public BigInteger getFilterCount() {
+	public Long getFilterCount() {
 		return filterCount;
 	}
 
-	public void setFilterCount(BigInteger filterCount) {
+	public void setFilterCount(Long filterCount) {
 		this.filterCount = filterCount;
 	}
 
-	public Timestamp getLastUpdated() {
+	public Date getLastUpdated() {
 		return lastUpdated;
 	}
 
-	public void setLastUpdated(Timestamp lastUpdated) {
+	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
 
-	public BigInteger getProcessSkipCount() {
+	public Long getProcessSkipCount() {
 		return processSkipCount;
 	}
 
-	public void setProcessSkipCount(BigInteger processSkipCount) {
+	public void setProcessSkipCount(Long processSkipCount) {
 		this.processSkipCount = processSkipCount;
 	}
 
-	public BigInteger getReadCount() {
+	public Long getReadCount() {
 		return readCount;
 	}
 
-	public void setReadCount(BigInteger readCount) {
+	public void setReadCount(Long readCount) {
 		this.readCount = readCount;
 	}
 
-	public BigInteger getReadSkipCount() {
+	public Long getReadSkipCount() {
 		return readSkipCount;
 	}
 
-	public void setReadSkipCount(BigInteger readSkipCount) {
+	public void setReadSkipCount(Long readSkipCount) {
 		this.readSkipCount = readSkipCount;
 	}
 
-	public BigInteger getRollbackCount() {
+	public Long getRollbackCount() {
 		return rollbackCount;
 	}
 
-	public void setRollbackCount(BigInteger rollbackCount) {
+	public void setRollbackCount(Long rollbackCount) {
 		this.rollbackCount = rollbackCount;
 	}
 
@@ -159,37 +159,38 @@ public class BatchStepExecutionDTO {
 		this.stepName = stepName;
 	}
 
-	public BigInteger getVersion() {
+	public Long getVersion() {
 		return version;
 	}
 
-	public void setVersion(BigInteger version) {
+	public void setVersion(Long version) {
 		this.version = version;
 	}
 
-	public BigInteger getWriteCount() {
+	public Long getWriteCount() {
 		return writeCount;
 	}
 
-	public void setWriteCount(BigInteger writeCount) {
+	public void setWriteCount(Long writeCount) {
 		this.writeCount = writeCount;
 	}
 
-	public BigInteger getWriteSkipCount() {
+	public Long getWriteSkipCount() {
 		return writeSkipCount;
 	}
 
-	public void setWriteSkipCount(BigInteger writeSkipCount) {
+	public void setWriteSkipCount(Long writeSkipCount) {
 		this.writeSkipCount = writeSkipCount;
 	}
 
-	public BatchJobExecutionDTO getBatchJobExecutionDTO() {
-		return batchJobExecutionDTO;
-	}
-
-	public void setBatchJobExecutionDTO(BatchJobExecutionDTO batchJobExecutionDTO) {
-		this.batchJobExecutionDTO = batchJobExecutionDTO;
-	}
+	// public BatchJobExecutionDTO getBatchJobExecutionDTO() {
+	// return batchJobExecutionDTO;
+	// }
+	//
+	// public void setBatchJobExecutionDTO(BatchJobExecutionDTO
+	// batchJobExecutionDTO) {
+	// this.batchJobExecutionDTO = batchJobExecutionDTO;
+	// }
 
 	public BatchStepExecutionContextDTO getBatchStepExecutionContextDTO() {
 		return batchStepExecutionContextDTO;
