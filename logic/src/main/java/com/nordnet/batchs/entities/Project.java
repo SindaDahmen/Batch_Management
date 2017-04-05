@@ -7,6 +7,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -117,7 +118,8 @@ public class Project {
 	}
 
 	// @Cascade(CascadeType.SAVE_UPDATE)
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "project")
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL, CascadeType.PERSIST,
+			CascadeType.MERGE }, mappedBy = "project")
 	// @Cascade(CascadeType.SAVE_UPDATE)
 	public Set<Batch> getBatches() {
 		return this.batches;

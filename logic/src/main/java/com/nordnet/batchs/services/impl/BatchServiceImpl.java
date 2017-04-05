@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nordnet.batchs.daos.BatchRepository;
+import com.nordnet.batchs.daos.ProjectRepository;
 import com.nordnet.batchs.dtos.BatchDTO;
 import com.nordnet.batchs.dtos.ProjectDTO;
 import com.nordnet.batchs.entities.Batch;
@@ -19,6 +20,9 @@ public class BatchServiceImpl implements BatchService {
 
 	@Autowired
 	private BatchRepository batchRepository;
+
+	@Autowired
+	private ProjectRepository projectRepository;
 
 	@Autowired
 	private ProjectService projectService;
@@ -63,8 +67,9 @@ public class BatchServiceImpl implements BatchService {
 	@Override
 	public BatchDTO createBatch(BatchDTO batchdto) {
 		Batch batch = convertBatchDTOToBatch(batchdto);
-		Batch savedBatch = batchRepository.save(batch);
-		return convertBatchToBatchDTO(savedBatch);
+		projectRepository.save(batch.getProject());
+		// Batch savedBatch = batchRepository.save(batch);
+		return convertBatchToBatchDTO(batch);
 	}
 
 	/**
@@ -118,6 +123,7 @@ public class BatchServiceImpl implements BatchService {
 			return null;
 		}
 		BatchDTO result = new BatchDTO();
+
 		result.setId(batch.getId());
 		result.setHttpVerb(batch.getHttpVerb());
 		result.setDescription(batch.getDescription());
@@ -181,7 +187,7 @@ public class BatchServiceImpl implements BatchService {
 		if (batchDTO.getProjectDTO() != null) {
 			Project project = convertProjectDTOToProject(batchDTO.getProjectDTO());
 			result.setProject(project);
-			// project.getBatches().add(result);
+			project.getBatches().add(result);
 
 		}
 
