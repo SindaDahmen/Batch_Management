@@ -12,6 +12,6 @@ public interface BatchService extends FwkGenericService<Batch, BatchDTO> {
 	 * @param projectId
 	 * @return
 	 */
-	List<BatchDTO> listBatchesByProject(int projectId);
+	List<BatchDTO> listBatchesByProject(Integer projectId);
 
 }

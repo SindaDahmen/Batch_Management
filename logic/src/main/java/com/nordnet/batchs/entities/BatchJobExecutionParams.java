@@ -29,7 +29,7 @@ public class BatchJobExecutionParams implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private long jobExecutionId;
+	private Integer jobExecutionId;
 	private BatchJobExecution batchJobExecution;
 	private String typeCd;
 	private String keyName;
@@ -62,11 +62,11 @@ public class BatchJobExecutionParams implements java.io.Serializable {
 	@Id
 	@GeneratedValue(generator = "generator")
 	@Column(name = "JOB_EXECUTION_ID", unique = true, nullable = false)
-	public long getJobExecutionId() {
+	public Integer getJobExecutionId() {
 		return this.jobExecutionId;
 	}
 
-	public void setJobExecutionId(long jobExecutionId) {
+	public void setJobExecutionId(Integer jobExecutionId) {
 		this.jobExecutionId = jobExecutionId;
 	}
 

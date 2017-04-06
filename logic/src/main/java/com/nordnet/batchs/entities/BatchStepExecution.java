@@ -31,7 +31,7 @@ public class BatchStepExecution implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private long stepExecutionId;
+	private Integer stepExecutionId;
 	private Long version;
 	private BatchJobExecution batchJobExecution;
 	private String stepName;
@@ -54,11 +54,11 @@ public class BatchStepExecution implements java.io.Serializable {
 	public BatchStepExecution() {
 	}
 
-	public BatchStepExecution(long stepExecutionId) {
+	public BatchStepExecution(Integer stepExecutionId) {
 		this.stepExecutionId = stepExecutionId;
 	}
 
-	public BatchStepExecution(long stepExecutionId, BatchJobExecution batchJobExecution, String stepName,
+	public BatchStepExecution(Integer stepExecutionId, BatchJobExecution batchJobExecution, String stepName,
 			Date startTime, Date endTime, String status, Long commitCount, Long readCount, Long filterCount,
 			Long writeCount, Long readSkipCount, Long writeSkipCount, Long processSkipCount, Long rollbackCount,
 			String exitCode, String exitMessage, Date lastUpdated,
@@ -86,11 +86,11 @@ public class BatchStepExecution implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "STEP_EXECUTION_ID", unique = true, nullable = false)
-	public long getStepExecutionId() {
+	public Integer getStepExecutionId() {
 		return this.stepExecutionId;
 	}
 
-	public void setStepExecutionId(long stepExecutionId) {
+	public void setStepExecutionId(Integer stepExecutionId) {
 		this.stepExecutionId = stepExecutionId;
 	}
 

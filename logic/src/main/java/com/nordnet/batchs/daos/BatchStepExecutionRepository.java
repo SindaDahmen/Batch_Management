@@ -11,9 +11,9 @@ import org.springframework.stereotype.Repository;
 import com.nordnet.batchs.entities.BatchStepExecution;
 
 @Repository
-public interface BatchStepExecutionRepository extends CrudRepository<BatchStepExecution, Long> {
+public interface BatchStepExecutionRepository extends CrudRepository<BatchStepExecution, Integer> {
 
 	@Query(" SELECT s FROM BatchStepExecution s  JOIN s.batchJobExecution b WHERE b.jobExecutionId = :jobExecutionId ")
-	List<BatchStepExecution> findByJobExecutionId(@Param(value = "jobExecutionId") Long jobExecutionId);
+	List<BatchStepExecution> findByJobExecutionId(@Param(value = "jobExecutionId") Integer jobExecutionId);
 
 }

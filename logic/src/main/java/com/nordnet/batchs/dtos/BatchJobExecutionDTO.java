@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BatchJobExecutionDTO {
 
-	private Long jobExecutionId;
+	private Integer jobExecutionId;
 
 	private Date createTime;
 
@@ -36,11 +36,11 @@ public class BatchJobExecutionDTO {
 
 	}
 
-	public Long getJobExecutionId() {
+	public Integer getJobExecutionId() {
 		return jobExecutionId;
 	}
 
-	public void setJobExecutionId(Long jobExecutionId) {
+	public void setJobExecutionId(Integer jobExecutionId) {
 		this.jobExecutionId = jobExecutionId;
 	}
 

@@ -6,8 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.nordnet.batchs.entities.BatchJobExecutionParams;
 
-
 @Repository
-public interface BatchJobExecutionParamsRepository  extends CrudRepository<BatchJobExecutionParams, Long>  {
+public interface BatchJobExecutionParamsRepository extends CrudRepository<BatchJobExecutionParams, Integer> {
 
 }

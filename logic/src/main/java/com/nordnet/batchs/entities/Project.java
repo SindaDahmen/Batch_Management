@@ -7,7 +7,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -121,8 +120,7 @@ public class Project implements java.io.Serializable {
 		this.beans = beans;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL, CascadeType.PERSIST,
-			CascadeType.MERGE }, mappedBy = "project")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "project")
 	public Set<Batch> getBatches() {
 		return this.batches;
 	}

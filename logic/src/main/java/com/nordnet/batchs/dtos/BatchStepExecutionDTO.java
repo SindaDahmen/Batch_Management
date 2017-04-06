@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class BatchStepExecutionDTO {
 
-	private Long stepExecutionId;
+	private Integer stepExecutionId;
 
 	private Long commitCount;
 
@@ -39,7 +39,7 @@ public class BatchStepExecutionDTO {
 
 	private Long writeSkipCount;
 
-	// private BatchJobExecutionDTO batchJobExecutionDTO;
+	private BatchJobExecutionDTO batchJobExecutionDTO;
 
 	private BatchStepExecutionContextDTO batchStepExecutionContextDTO;
 
@@ -47,11 +47,11 @@ public class BatchStepExecutionDTO {
 
 	}
 
-	public Long getStepExecutionId() {
+	public Integer getStepExecutionId() {
 		return stepExecutionId;
 	}
 
-	public void setStepExecutionId(Long stepExecutionId) {
+	public void setStepExecutionId(Integer stepExecutionId) {
 		this.stepExecutionId = stepExecutionId;
 	}
 
@@ -183,14 +183,13 @@ public class BatchStepExecutionDTO {
 		this.writeSkipCount = writeSkipCount;
 	}
 
-	// public BatchJobExecutionDTO getBatchJobExecutionDTO() {
-	// return batchJobExecutionDTO;
-	// }
-	//
-	// public void setBatchJobExecutionDTO(BatchJobExecutionDTO
-	// batchJobExecutionDTO) {
-	// this.batchJobExecutionDTO = batchJobExecutionDTO;
-	// }
+	public BatchJobExecutionDTO getBatchJobExecutionDTO() {
+		return batchJobExecutionDTO;
+	}
+
+	public void setBatchJobExecutionDTO(BatchJobExecutionDTO batchJobExecutionDTO) {
+		this.batchJobExecutionDTO = batchJobExecutionDTO;
+	}
 
 	public BatchStepExecutionContextDTO getBatchStepExecutionContextDTO() {
 		return batchStepExecutionContextDTO;

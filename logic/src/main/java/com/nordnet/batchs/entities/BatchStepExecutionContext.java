@@ -25,7 +25,7 @@ public class BatchStepExecutionContext implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private long stepExecutionId;
+	private Integer stepExecutionId;
 	private BatchStepExecution batchStepExecution;
 	private String shortContext;
 	private String serializedContext;
@@ -48,11 +48,11 @@ public class BatchStepExecutionContext implements java.io.Serializable {
 	@Id
 	@GeneratedValue(generator = "generator")
 	@Column(name = "STEP_EXECUTION_ID", unique = true)
-	public long getStepExecutionId() {
+	public Integer getStepExecutionId() {
 		return this.stepExecutionId;
 	}
 
-	public void setStepExecutionId(long stepExecutionId) {
+	public void setStepExecutionId(Integer stepExecutionId) {
 		this.stepExecutionId = stepExecutionId;
 	}
 

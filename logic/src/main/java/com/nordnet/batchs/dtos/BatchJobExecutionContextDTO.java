@@ -2,7 +2,7 @@ package com.nordnet.batchs.dtos;
 
 public class BatchJobExecutionContextDTO {
 
-	private Long jobExecutionId;
+	private Integer jobExecutionId;
 
 	public BatchJobExecutionContextDTO() {
 
@@ -14,11 +14,11 @@ public class BatchJobExecutionContextDTO {
 
 	private BatchJobExecutionDTO batchJobExecutionDTO;
 
-	public Long getJobExecutionId() {
+	public Integer getJobExecutionId() {
 		return jobExecutionId;
 	}
 
-	public void setJobExecutionId(Long jobExecutionId) {
+	public void setJobExecutionId(Integer jobExecutionId) {
 		this.jobExecutionId = jobExecutionId;
 	}
 

@@ -27,16 +27,25 @@ public class BatchServiceImpl extends FwkGenericServiceImpl<Batch, BatchDTO, Bat
 	 * 
 	 * @param repository
 	 */
+
 	public BatchServiceImpl(BatchRepository repository) {
 		super(repository);
 	}
 
+	/**
+	 * 
+	 */
+
 	@Override
-	public List<BatchDTO> listBatchesByProject(int projectId) {
+	public List<BatchDTO> listBatchesByProject(Integer projectId) {
 		List<Batch> batchs = this.batchRepository.findByProjectId(projectId);
 		List<BatchDTO> result = convertToDTO(batchs);
 		return result;
 	}
+
+	/**
+	 * 
+	 */
 
 	@Override
 	public Batch convertToEntity(BatchDTO batchDTO) {
@@ -54,6 +63,10 @@ public class BatchServiceImpl extends FwkGenericServiceImpl<Batch, BatchDTO, Bat
 
 		return result;
 	}
+
+	/**
+	 * 
+	 */
 
 	@Override
 	public BatchDTO convertToDTO(Batch batch) {

@@ -2,7 +2,7 @@ package com.nordnet.batchs.dtos;
 
 public class BatchStepExecutionContextDTO {
 
-	private Long stepExecutionId;
+	private Integer stepExecutionId;
 
 	private String serializedContext;
 
@@ -14,11 +14,11 @@ public class BatchStepExecutionContextDTO {
 
 	}
 
-	public Long getStepExecutionId() {
+	public Integer getStepExecutionId() {
 		return stepExecutionId;
 	}
 
-	public void setStepExecutionId(Long stepExecutionId) {
+	public void setStepExecutionId(Integer stepExecutionId) {
 		this.stepExecutionId = stepExecutionId;
 	}
 

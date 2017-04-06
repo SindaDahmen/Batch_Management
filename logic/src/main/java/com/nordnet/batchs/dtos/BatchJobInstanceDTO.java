@@ -2,7 +2,7 @@ package com.nordnet.batchs.dtos;
 
 public class BatchJobInstanceDTO {
 
-	private Long jobInstanceId;
+	private Integer jobInstanceId;
 
 	private String jobKey;
 
@@ -16,11 +16,11 @@ public class BatchJobInstanceDTO {
 
 	}
 
-	public Long getJobInstanceId() {
+	public Integer getJobInstanceId() {
 		return jobInstanceId;
 	}
 
-	public void setJobInstanceId(Long jobInstanceId) {
+	public void setJobInstanceId(Integer jobInstanceId) {
 		this.jobInstanceId = jobInstanceId;
 	}
 

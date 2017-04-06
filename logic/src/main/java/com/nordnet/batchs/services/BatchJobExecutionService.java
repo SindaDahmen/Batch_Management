@@ -5,8 +5,12 @@ import com.nordnet.batchs.entities.BatchJobExecution;
 
 public interface BatchJobExecutionService extends FwkGenericService<BatchJobExecution, BatchJobExecutionDTO> {
 
-//	BatchJobExecutionDTO createHistory(BatchJobExecutionDTO batchjobexecutiondto);
-//
-//	BatchJobExecution updateHistory(Long id);
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+
+	BatchJobExecution updateHistory(Integer id);
 
 }

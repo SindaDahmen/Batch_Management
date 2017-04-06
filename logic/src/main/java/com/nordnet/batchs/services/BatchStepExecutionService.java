@@ -5,31 +5,7 @@ import java.util.List;
 import com.nordnet.batchs.dtos.BatchStepExecutionDTO;
 import com.nordnet.batchs.entities.BatchStepExecution;
 
-public interface BatchStepExecutionService {
-
-	/**
-	 * 
-	 * @param batchstepexecutionDTO
-	 * @return
-	 */
-
-	BatchStepExecution convertBatchStepExecutionDTOToBatchStepExecution(BatchStepExecutionDTO batchstepexecutionDTO);
-
-	/**
-	 * 
-	 * @param batchstepexecution
-	 * @return
-	 */
-
-	BatchStepExecutionDTO convertBatchStepExecutionToBatchStepExecutionDTO(BatchStepExecution batchstepexecution);
-
-	/**
-	 * 
-	 * @param batchstepexecutiondto
-	 * @return
-	 */
-
-	BatchStepExecutionDTO createHistory(BatchStepExecutionDTO batchstepexecutiondto);
+public interface BatchStepExecutionService extends FwkGenericService<BatchStepExecution, BatchStepExecutionDTO> {
 
 	/**
 	 * 
@@ -37,22 +13,14 @@ public interface BatchStepExecutionService {
 	 * @return
 	 */
 
-	List<BatchStepExecutionDTO> listStepsByBatch(Long JobExecutionId);
+	List<BatchStepExecutionDTO> HistoriqueStepsByBatch(Integer jobExecutionId);
 
 	/**
 	 * 
-	 * @param steps
+	 * @param id
 	 * @return
 	 */
 
-	List<BatchStepExecutionDTO> convertBatchStepExecutionToBatchStepExecutionDTOS(List<BatchStepExecution> steps);
-
-	/**
-	 * 
-	 * @param stepsDTO
-	 * @return
-	 */
-
-	List<BatchStepExecution> convertBatchStepExecutionDTOSToBatchStepExecution(List<BatchStepExecutionDTO> stepsDTO);
+	BatchStepExecution updateHistoryStep(Integer id);
 
 }
