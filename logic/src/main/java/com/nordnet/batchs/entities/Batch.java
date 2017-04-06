@@ -69,7 +69,6 @@ public class Batch implements java.io.Serializable {
 		this.id = id;
 	}
 
-	// @Cascade({ CascadeType.ALL })
 	@Cascade({ CascadeType.SAVE_UPDATE })
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "project_id", updatable = true, insertable = true, nullable = false)

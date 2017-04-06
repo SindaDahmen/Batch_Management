@@ -8,6 +8,6 @@ import com.nordnet.batchs.entities.BatchJobInstance;
 
 
 @Repository
-public interface BatchJobInstanceRepository  extends CrudRepository<BatchJobInstance, Long>  {
+public interface BatchJobInstanceRepository  extends CrudRepository<BatchJobInstance, Integer>  {
 
 }

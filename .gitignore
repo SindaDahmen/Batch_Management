@@ -1,0 +1,9 @@
+.settings
+.classpath
+.project
+/logic/target/
+/front/target/
+/target/
+*.class
+.idea
+**/*.iml

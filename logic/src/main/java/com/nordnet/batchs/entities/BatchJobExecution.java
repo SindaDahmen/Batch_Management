@@ -33,7 +33,7 @@ public class BatchJobExecution implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private long jobExecutionId;
+	private Integer jobExecutionId;
 	private Long version;
 	private Batch batch;
 	private Bean bean;
@@ -53,11 +53,11 @@ public class BatchJobExecution implements java.io.Serializable {
 	public BatchJobExecution() {
 	}
 
-	public BatchJobExecution(long jobExecutionId) {
+	public BatchJobExecution(Integer jobExecutionId) {
 		this.jobExecutionId = jobExecutionId;
 	}
 
-	public BatchJobExecution(long jobExecutionId, Batch batch, Bean bean, BatchJobInstance batchJobInstance,
+	public BatchJobExecution(Integer jobExecutionId, Batch batch, Bean bean, BatchJobInstance batchJobInstance,
 			Date createTime, Date startTime, Date endTime, String status, String exitCode, String exitMessage,
 			Date lastUpdated, String jobConfigurationLocation, Set<BatchStepExecution> batchStepExecutions,
 			BatchJobExecutionParams batchJobExecutionParams, BatchJobExecutionContext batchJobExecutionContext) {
@@ -81,11 +81,11 @@ public class BatchJobExecution implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "JOB_EXECUTION_ID", unique = true, nullable = false)
-	public long getJobExecutionId() {
+	public Integer getJobExecutionId() {
 		return this.jobExecutionId;
 	}
 
-	public void setJobExecutionId(long jobExecutionId) {
+	public void setJobExecutionId(Integer jobExecutionId) {
 		this.jobExecutionId = jobExecutionId;
 	}
 

@@ -20,8 +20,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "job")
-public class Job  {
+public class Job implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private Bean bean;
 	private String name;
