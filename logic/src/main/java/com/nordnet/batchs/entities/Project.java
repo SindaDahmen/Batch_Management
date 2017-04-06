@@ -23,8 +23,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "project")
-public class Project {
+public class Project implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String version;
 	private String name;
@@ -47,7 +51,7 @@ public class Project {
 		this.description = description;
 		this.servicesUrl = servicesUrl;
 		this.swaggerUrl = swaggerUrl;
-		// this.beans = beans;
+		this.beans = beans;
 		this.batches = batches;
 	}
 
@@ -117,10 +121,8 @@ public class Project {
 		this.beans = beans;
 	}
 
-	// @Cascade(CascadeType.SAVE_UPDATE)
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL, CascadeType.PERSIST,
 			CascadeType.MERGE }, mappedBy = "project")
-	// @Cascade(CascadeType.SAVE_UPDATE)
 	public Set<Batch> getBatches() {
 		return this.batches;
 	}

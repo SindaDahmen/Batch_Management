@@ -8,6 +8,6 @@ import com.nordnet.batchs.entities.Bean;
 
 
 @Repository
-public interface BeanRepository  extends CrudRepository<Bean, Integer>  {
+public interface BeanRepository extends CrudRepository<Bean, Integer>  {
 
 }

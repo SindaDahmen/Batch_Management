@@ -1,26 +1,22 @@
 package com.nordnet.batchs.controllers;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nordnet.batchs.dtos.ProjectDTO;
 import com.nordnet.batchs.entities.Project;
 import com.nordnet.batchs.services.ProjectService;
 
 @RestController
 @RequestMapping(value = "projects")
-public class ProjectController {
+public class ProjectController extends GenericRestController<Project, ProjectDTO, ProjectService> {
 
-	@Autowired
-	private ProjectService projectService;
-
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public List<Project> listingProject() {
-		List<Project> project = projectService.listProject();
-		return project;
+	/**
+	 * 
+	 * @param service
+	 */
+	public ProjectController(ProjectService service) {
+		super(service);
 	}
 
 }
