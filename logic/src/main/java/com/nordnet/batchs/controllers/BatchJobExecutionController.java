@@ -1,9 +1,12 @@
 package com.nordnet.batchs.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nordnet.batchs.dtos.BatchJobExecutionDTO;
@@ -36,4 +39,13 @@ public class BatchJobExecutionController
 	public void update(@PathVariable Integer id) {
 		batchJobExecutionService.updateHistory(id);
 	}
+
+	@RequestMapping(method = RequestMethod.GET)
+	public List<BatchJobExecutionDTO> listAll(@RequestParam(value = "batchId", required = false) Integer batchId) {
+		if (batchId == null) {
+			return listAll();
+		}
+		return batchJobExecutionService.listExecutionByBatch(batchId);
+	}
+
 }

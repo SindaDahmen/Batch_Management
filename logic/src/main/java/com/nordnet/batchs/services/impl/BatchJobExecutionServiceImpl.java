@@ -1,6 +1,7 @@
 package com.nordnet.batchs.services.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,13 @@ public class BatchJobExecutionServiceImpl
 	/**
 	 * 
 	 */
+
+	@Override
+	public List<BatchJobExecutionDTO> listExecutionByBatch(Integer id) {
+		List<BatchJobExecution> batchsjobexecution = this.batchJobExecutionRepository.findById(id);
+		List<BatchJobExecutionDTO> result = convertToDTO(batchsjobexecution);
+		return result;
+	}
 
 	@Override
 	public BatchJobExecution convertToEntity(BatchJobExecutionDTO dto) {

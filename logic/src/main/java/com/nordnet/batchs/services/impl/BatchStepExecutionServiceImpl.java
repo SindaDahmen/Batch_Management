@@ -56,6 +56,7 @@ public class BatchStepExecutionServiceImpl
 
 		BeanUtils.copyProperties(dto, result);
 		result.setStartTime(new Date());
+
 		if (dto.getBatchJobExecutionDTO() != null) {
 			BatchJobExecution batchJobExecution = batchJobExecutionService
 					.convertToEntity(dto.getBatchJobExecutionDTO());

@@ -1,5 +1,7 @@
 package com.nordnet.batchs.services;
 
+import java.util.List;
+
 import com.nordnet.batchs.dtos.BatchJobExecutionDTO;
 import com.nordnet.batchs.entities.BatchJobExecution;
 
@@ -12,5 +14,7 @@ public interface BatchJobExecutionService extends FwkGenericService<BatchJobExec
 	 */
 
 	BatchJobExecution updateHistory(Integer id);
+
+	List<BatchJobExecutionDTO> listExecutionByBatch(Integer id);
 
 }
