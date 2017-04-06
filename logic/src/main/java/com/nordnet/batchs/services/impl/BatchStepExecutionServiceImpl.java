@@ -1,6 +1,8 @@
 package com.nordnet.batchs.services.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +34,54 @@ public class BatchStepExecutionServiceImpl implements BatchStepExecutionService 
 		batchStepExecution.setStartTime(new Date());
 		BatchStepExecution savedBatchStepExecution = batchStepExecutionRepository.save(batchStepExecution);
 		return convertBatchStepExecutionToBatchStepExecutionDTO(savedBatchStepExecution);
+	}
+
+	/**
+	 * 
+	 */
+
+	@Override
+	public List<BatchStepExecutionDTO> listStepsByBatch(Long JobExecutionId) {
+		List<BatchStepExecution> steps = this.batchStepExecutionRepository.findByJobExecutionId(JobExecutionId);
+		List<BatchStepExecutionDTO> result = convertBatchStepExecutionToBatchStepExecutionDTOS(steps);
+		return result;
+	}
+
+	/**
+	 * 
+	 * @param steps
+	 * @return
+	 */
+
+	public List<BatchStepExecutionDTO> convertBatchStepExecutionToBatchStepExecutionDTOS(
+			List<BatchStepExecution> steps) {
+		List<BatchStepExecutionDTO> result = new ArrayList<BatchStepExecutionDTO>();
+		for (BatchStepExecution step : steps) {
+			BatchStepExecutionDTO batchStepExecutionDTO = convertBatchStepExecutionToBatchStepExecutionDTO(step);
+			if (batchStepExecutionDTO != null) {
+				result.add(batchStepExecutionDTO);
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * 
+	 * @param stepsDTO
+	 * @return
+	 */
+
+	public List<BatchStepExecution> convertBatchStepExecutionDTOSToBatchStepExecution(
+			List<BatchStepExecutionDTO> stepsDTO) {
+		List<BatchStepExecution> result = new ArrayList<BatchStepExecution>();
+		for (BatchStepExecutionDTO stepDTO : stepsDTO) {
+			BatchStepExecution batchStepExecution = convertBatchStepExecutionDTOToBatchStepExecution(stepDTO);
+			if (batchStepExecution != null) {
+				result.add(batchStepExecution);
+			}
+		}
+		return result;
+
 	}
 
 	/**
@@ -110,6 +160,10 @@ public class BatchStepExecutionServiceImpl implements BatchStepExecutionService 
 				.convertBatchStepExecutionContextDTOToBatchStepExecutionContext(batchStepExecutionContextDTO);
 
 	}
+
+	/**
+	 * 
+	 */
 
 	public BatchStepExecutionDTO convertBatchStepExecutionToBatchStepExecutionDTO(
 			BatchStepExecution batchstepexecution) {
