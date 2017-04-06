@@ -15,6 +15,4 @@ public interface BatchRepository extends CrudRepository<Batch, Integer> {
 	@Query(" SELECT b FROM Batch b  JOIN b.project p WHERE p.id = :projectId ")
 	List<Batch> findByProjectId(@Param(value = "projectId") int projectId);
 
-	// Batch saveOrUpdate(Batch batch);
-
 }

@@ -51,24 +51,25 @@ public class BatchServiceImpl extends FwkGenericServiceImpl<Batch, BatchDTO, Bat
 			Project project = projectService.convertToEntity(batchDTO.getProjectDTO());
 			result.setProject(project);
 		}
-		
+
 		return result;
-	 }
+	}
 
 	@Override
 	public BatchDTO convertToDTO(Batch batch) {
 		if (batch == null) {
 			return null;
 		}
-		
+
 		BatchDTO result = new BatchDTO();
 		BeanUtils.copyProperties(batch, result);
-		
+
 		if (batch.getProject() != null) {
 			ProjectDTO projectDTO = projectService.convertToDTO(batch.getProject());
 			result.setProjectDTO(projectDTO);
 		}
-		
 		return result;
+
 	}
+
 }
