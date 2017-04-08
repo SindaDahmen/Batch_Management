@@ -14,7 +14,7 @@ import com.nordnet.batchs.entities.BatchStepExecution;
 import com.nordnet.batchs.services.BatchStepExecutionService;
 
 @RestController
-@RequestMapping(value = "batchStepExecution")
+@RequestMapping(value = "batchStepExecutions")
 public class BatchStepExecutionController
 		extends GenericRestController<BatchStepExecution, BatchStepExecutionDTO, BatchStepExecutionService> {
 
@@ -36,7 +36,7 @@ public class BatchStepExecutionController
 		if (JobExecutionId == null) {
 			return listAll();
 		}
-		return batchStepExecutionService.HistoriqueStepsByBatch(JobExecutionId);
+		return batchStepExecutionService.HistoriqueStepsByBatchExecution(JobExecutionId);
 	}
 
 }

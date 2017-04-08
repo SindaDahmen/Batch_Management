@@ -13,7 +13,7 @@ public interface BatchStepExecutionService extends FwkGenericService<BatchStepEx
 	 * @return
 	 */
 
-	List<BatchStepExecutionDTO> HistoriqueStepsByBatch(Integer jobExecutionId);
+	List<BatchStepExecutionDTO> HistoriqueStepsByBatchExecution(Integer jobExecutionId);
 
 	/**
 	 * 

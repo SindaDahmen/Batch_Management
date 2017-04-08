@@ -102,7 +102,7 @@ public class BatchStepExecutionServiceImpl
 	}
 
 	@Override
-	public List<BatchStepExecutionDTO> HistoriqueStepsByBatch(Integer jobExecutionId) {
+	public List<BatchStepExecutionDTO> HistoriqueStepsByBatchExecution(Integer jobExecutionId) {
 		List<BatchStepExecution> steps = this.batchStepExecutionRepository.findByJobExecutionId(jobExecutionId);
 		List<BatchStepExecutionDTO> result = convertToDTO(steps);
 		return result;

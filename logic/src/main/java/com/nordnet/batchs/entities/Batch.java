@@ -71,7 +71,7 @@ public class Batch implements java.io.Serializable {
 
 	@Cascade({ CascadeType.SAVE_UPDATE })
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "project_id", updatable = true, insertable = true, nullable = false)
+	@JoinColumn(name = "project_id", nullable = false)
 	public Project getProject() {
 		return this.project;
 	}
@@ -125,6 +125,7 @@ public class Batch implements java.io.Serializable {
 		this.parameters = parameters;
 	}
 
+	@Cascade({ CascadeType.DELETE })
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "batch")
 	public Set<BatchJobExecution> getBatchJobExecutions() {
 		return this.batchJobExecutions;

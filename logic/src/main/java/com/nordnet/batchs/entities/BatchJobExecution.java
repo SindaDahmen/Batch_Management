@@ -205,7 +205,8 @@ public class BatchJobExecution implements java.io.Serializable {
 		this.jobConfigurationLocation = jobConfigurationLocation;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "batchJobExecution")
+	// @Cascade({ CascadeType.DELETE })
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "batchJobExecution", cascade = CascadeType.REMOVE)
 	public Set<BatchStepExecution> getBatchStepExecutions() {
 		return this.batchStepExecutions;
 	}
