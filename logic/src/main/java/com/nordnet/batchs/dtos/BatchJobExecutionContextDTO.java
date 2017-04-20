@@ -4,15 +4,15 @@ public class BatchJobExecutionContextDTO {
 
 	private Integer jobExecutionId;
 
-	public BatchJobExecutionContextDTO() {
-
-	}
-
 	private String serializedContext;
 
 	private String shortContext;
 
 	private BatchJobExecutionDTO batchJobExecutionDTO;
+
+	public BatchJobExecutionContextDTO() {
+		
+	}
 
 	public Integer getJobExecutionId() {
 		return jobExecutionId;

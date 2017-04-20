@@ -3,6 +3,8 @@ package com.nordnet.batchs.dtos;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class ProjectDTO {
 
 	private Integer id;
@@ -15,6 +17,7 @@ public class ProjectDTO {
 
 	private String swaggerUrl;
 
+	@JsonFormat(pattern = "dd/MM/yyyy hh:mm:dd")
 	private Date createTime;
 
 	private String version;

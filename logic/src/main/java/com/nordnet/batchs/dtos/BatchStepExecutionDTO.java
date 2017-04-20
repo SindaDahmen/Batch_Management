@@ -1,7 +1,8 @@
 package com.nordnet.batchs.dtos;
 
-import java.sql.Timestamp;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class BatchStepExecutionDTO {
 
@@ -9,14 +10,13 @@ public class BatchStepExecutionDTO {
 
 	private Long commitCount;
 
-	private Timestamp endTime;
-
 	private String exitCode;
 
 	private String exitMessage;
 
 	private Long filterCount;
 
+	@JsonFormat(pattern = "dd/MM/yyyy hh:mm:dd")
 	private Date lastUpdated;
 
 	private Long processSkipCount;
@@ -27,7 +27,11 @@ public class BatchStepExecutionDTO {
 
 	private Long rollbackCount;
 
-	private Timestamp startTime;
+	@JsonFormat(pattern = "dd/MM/yyyy hh:mm:dd")
+	private Date startTime;
+
+	@JsonFormat(pattern = "dd/MM/yyyy hh:mm:dd")
+	private Date endTime;
 
 	private String status;
 
@@ -63,11 +67,11 @@ public class BatchStepExecutionDTO {
 		this.commitCount = commitCount;
 	}
 
-	public Timestamp getEndTime() {
+	public Date getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(Timestamp endTime) {
+	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
 
@@ -135,11 +139,11 @@ public class BatchStepExecutionDTO {
 		this.rollbackCount = rollbackCount;
 	}
 
-	public Timestamp getStartTime() {
+	public Date getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(Timestamp startTime) {
+	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}
 

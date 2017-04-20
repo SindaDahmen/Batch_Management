@@ -13,7 +13,7 @@ import com.nordnet.batchs.entities.BatchStepExecution;
 @Repository
 public interface BatchStepExecutionRepository extends CrudRepository<BatchStepExecution, Integer> {
 
-	@Query(" SELECT s FROM BatchStepExecution s  JOIN s.batchJobExecution b WHERE b.jobExecutionId = :jobExecutionId ")
+	@Query(" SELECT s FROM BatchStepExecution s JOIN s.batchJobExecution b WHERE b.jobExecutionId = :jobExecutionId ")
 	List<BatchStepExecution> findByJobExecutionId(@Param(value = "jobExecutionId") Integer jobExecutionId);
 
 }

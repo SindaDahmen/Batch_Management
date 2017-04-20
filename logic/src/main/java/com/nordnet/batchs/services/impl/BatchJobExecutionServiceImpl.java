@@ -41,7 +41,6 @@ public class BatchJobExecutionServiceImpl
 	 * 
 	 * @param repository
 	 */
-
 	public BatchJobExecutionServiceImpl(BatchJobExecutionRepository repository) {
 		super(repository);
 	}
@@ -49,7 +48,6 @@ public class BatchJobExecutionServiceImpl
 	/**
 	 * 
 	 */
-
 	@Override
 	public List<BatchJobExecutionDTO> listExecutionByBatch(Integer id) {
 		List<BatchJobExecution> batchsjobexecution = this.batchJobExecutionRepository.findById(id);
@@ -67,12 +65,12 @@ public class BatchJobExecutionServiceImpl
 
 		BeanUtils.copyProperties(dto, result);
 
-		result.setStartTime(new Date());
+		// TODO
+		// Why ?
+		// result.setStartTime(new Date());
 
 		if (dto.getBatchDTO() != null) {
-
 			Batch batch = batchService.convertToEntity(dto.getBatchDTO());
-
 			result.setBatch(batch);
 		}
 
@@ -84,7 +82,6 @@ public class BatchJobExecutionServiceImpl
 		}
 
 		if (dto.getBatchJobExecutionParamDTO() != null) {
-
 			BatchJobExecutionParams batchJobExecutionParams = batchJobExecutionParamsService
 					.convertToEntity(dto.getBatchJobExecutionParamDTO());
 			result.setBatchJobExecutionParams(batchJobExecutionParams);
@@ -115,8 +112,7 @@ public class BatchJobExecutionServiceImpl
 		}
 
 		if (entity.getBatchJobExecutionContext() != null) {
-			BatchJobExecutionContextDTO batchJobExecutionContextDTO = batchJobExecutionContextService
-					.convertToDTO(entity.getBatchJobExecutionContext());
+			BatchJobExecutionContextDTO batchJobExecutionContextDTO = batchJobExecutionContextService.convertToDTO(entity.getBatchJobExecutionContext());
 			result.setBatchJobExecutionContextDTO(batchJobExecutionContextDTO);
 		}
 
@@ -125,16 +121,18 @@ public class BatchJobExecutionServiceImpl
 	}
 
 	@Override
-	public BatchJobExecution updateHistory(Integer id) {
-		BatchJobExecution batchJobExecution = batchJobExecutionRepository.findOne(id);
+	public BatchJobExecutionDTO updateEndTime(Integer batchJobExecutionId) {
+		BatchJobExecution batchJobExecution = batchJobExecutionRepository.findOne(batchJobExecutionId);
 		batchJobExecution.setEndTime(new Date());
-		BatchJobExecution result = batchJobExecutionRepository.save(batchJobExecution);
-		return result;
+		BatchJobExecution entity = batchJobExecutionRepository.save(batchJobExecution);
+		return convertToDTO(entity);
 	}
 
 	@Override
-	public BatchJobExecution getLastJobExecution(Integer batchId) {
-		return batchJobExecutionRepository.getLastExecution(batchId);
+	public BatchJobExecutionDTO getLastJobExecution(Integer batchId) {
+		List<BatchJobExecution> executions = batchJobExecutionRepository.getExecutions(batchId);
+		BatchJobExecution entity = (executions != null && !executions.isEmpty()) ? executions.get(0) : null;
+		return convertToDTO(entity);
 
 	}
 

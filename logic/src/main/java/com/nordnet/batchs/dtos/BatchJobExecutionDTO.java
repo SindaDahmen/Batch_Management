@@ -2,12 +2,16 @@ package com.nordnet.batchs.dtos;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class BatchJobExecutionDTO {
 
 	private Integer jobExecutionId;
 
+	@JsonFormat(pattern = "dd/MM/yyyy hh:mm:dd")
 	private Date createTime;
 
+	@JsonFormat(pattern = "dd/MM/yyyy hh:mm:dd")
 	private Date endTime;
 
 	private String exitCode;
@@ -16,8 +20,10 @@ public class BatchJobExecutionDTO {
 
 	private String jobConfigurationLocation;
 
+	@JsonFormat(pattern = "dd/MM/yyyy hh:mm:dd")
 	private Date lastUpdated;
 
+	@JsonFormat(pattern = "dd/MM/yyyy hh:mm:dd")
 	private Date startTime;
 
 	private String status;

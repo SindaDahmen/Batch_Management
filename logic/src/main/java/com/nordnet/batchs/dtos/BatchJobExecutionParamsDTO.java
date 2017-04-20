@@ -2,10 +2,13 @@ package com.nordnet.batchs.dtos;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class BatchJobExecutionParamsDTO {
 
 	private Integer jobExecutionId;
 
+	@JsonFormat(pattern = "dd/MM/yyyy hh:mm:dd")
 	private Date dateVal;
 
 	private double doubleVal;

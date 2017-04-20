@@ -21,22 +21,25 @@ public class BatchStepExecutionController
 	@Autowired
 	private BatchStepExecutionService batchStepExecutionService;
 
+	/**
+	 * 
+	 * @param service
+	 */
 	public BatchStepExecutionController(BatchStepExecutionService service) {
 		super(service);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public void update(@PathVariable Integer id) {
-		batchStepExecutionService.updateHistoryStep(id);
+	public void update(@PathVariable("id") Integer id) {
+		batchStepExecutionService.updateEndTime(id);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public List<BatchStepExecutionDTO> listAll(
-			@RequestParam(value = "JobExecutionId", required = false) Integer JobExecutionId) {
+	public List<BatchStepExecutionDTO> listAll(@RequestParam(value = "JobExecutionId", required = false) Integer JobExecutionId) {
 		if (JobExecutionId == null) {
 			return listAll();
 		}
-		return batchStepExecutionService.HistoriqueStepsByBatchExecution(JobExecutionId);
+		return batchStepExecutionService.listStepsByBatchExecution(JobExecutionId);
 	}
 
 }

@@ -42,7 +42,7 @@ public class GenericRestController<E extends Serializable, DTO, Service extends 
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody DTO get(@PathVariable Integer id) {
+	public @ResponseBody DTO get(@PathVariable("id") Integer id) {
 		return service.getById(id);
 	}
 

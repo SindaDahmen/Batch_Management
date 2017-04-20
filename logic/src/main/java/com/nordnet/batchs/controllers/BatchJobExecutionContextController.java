@@ -16,7 +16,6 @@ public class BatchJobExecutionContextController extends
 	 * 
 	 * @param service
 	 */
-
 	public BatchJobExecutionContextController(BatchJobExecutionContextService service) {
 		super(service);
 	}

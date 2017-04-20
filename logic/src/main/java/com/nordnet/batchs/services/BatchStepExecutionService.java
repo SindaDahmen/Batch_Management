@@ -9,18 +9,16 @@ public interface BatchStepExecutionService extends FwkGenericService<BatchStepEx
 
 	/**
 	 * 
-	 * @param JobExecutionId
+	 * @param jobExecutionId
 	 * @return
 	 */
-
-	List<BatchStepExecutionDTO> HistoriqueStepsByBatchExecution(Integer jobExecutionId);
+	List<BatchStepExecutionDTO> listStepsByBatchExecution(Integer jobExecutionId);
 
 	/**
 	 * 
-	 * @param id
+	 * @param batchStepExecutionId
 	 * @return
 	 */
-
-	BatchStepExecution updateHistoryStep(Integer id);
+	BatchStepExecution updateEndTime(Integer id);
 
 }

@@ -45,7 +45,6 @@ public class BatchStepExecutionServiceImpl
 	/**
 	 * 
 	 */
-
 	@Override
 	public BatchStepExecution convertToEntity(BatchStepExecutionDTO dto) {
 		if (dto == null) {
@@ -102,16 +101,15 @@ public class BatchStepExecutionServiceImpl
 	}
 
 	@Override
-	public List<BatchStepExecutionDTO> HistoriqueStepsByBatchExecution(Integer jobExecutionId) {
+	public List<BatchStepExecutionDTO> listStepsByBatchExecution(Integer jobExecutionId) {
 		List<BatchStepExecution> steps = this.batchStepExecutionRepository.findByJobExecutionId(jobExecutionId);
 		List<BatchStepExecutionDTO> result = convertToDTO(steps);
 		return result;
 	}
 
 	@Override
-	public BatchStepExecution updateHistoryStep(Integer id) {
-
-		BatchStepExecution batchStepExecution = batchStepExecutionRepository.findOne(id);
+	public BatchStepExecution updateEndTime(Integer batchStepExecutionId) {
+		BatchStepExecution batchStepExecution = batchStepExecutionRepository.findOne(batchStepExecutionId);
 		batchStepExecution.setEndTime(new Date());
 		BatchStepExecution result = batchStepExecutionRepository.save(batchStepExecution);
 		return result;
