@@ -3,6 +3,7 @@ package com.nordnet.batchs.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ import com.nordnet.batchs.services.BatchService;
 
 @RestController
 @RequestMapping(value = "batchs")
+@CrossOrigin(origins = "http://localhost:3000")
 public class BatchController extends GenericRestController<Batch, BatchDTO, BatchService> {
 
 	@Autowired
@@ -26,7 +28,7 @@ public class BatchController extends GenericRestController<Batch, BatchDTO, Batc
 	public BatchController(BatchService service) {
 		super(service);
 	}
-	
+
 	/**
 	 * 
 	 * @param projectId

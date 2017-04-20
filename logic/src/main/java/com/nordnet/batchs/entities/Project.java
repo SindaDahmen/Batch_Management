@@ -2,6 +2,8 @@ package com.nordnet.batchs.entities;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.Date;
+
 // Generated 24 mars 2017 10:30:00 by Hibernate Tools 3.4.0.CR1
 
 import java.util.HashSet;
@@ -17,6 +19,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 // import javax.persistence.Version;
 
@@ -37,6 +41,7 @@ public class Project implements java.io.Serializable {
 	private String description;
 	private String servicesUrl;
 	private String swaggerUrl;
+	private Date createTime;
 	private Set<Bean> beans = new HashSet<Bean>(0);
 	private Set<Batch> batches = new HashSet<Batch>(0);
 
@@ -47,12 +52,13 @@ public class Project implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public Project(String name, String description, String servicesUrl, String swaggerUrl, Set<Bean> beans,
-			Set<Batch> batches) {
+	public Project(String name, String description, String servicesUrl, String swaggerUrl, Date createTime,
+			Set<Bean> beans, Set<Batch> batches) {
 		this.name = name;
 		this.description = description;
 		this.servicesUrl = servicesUrl;
 		this.swaggerUrl = swaggerUrl;
+		this.createTime = createTime;
 		this.beans = beans;
 		this.batches = batches;
 	}
@@ -112,6 +118,15 @@ public class Project implements java.io.Serializable {
 
 	public void setSwaggerUrl(String swaggerUrl) {
 		this.swaggerUrl = swaggerUrl;
+	}
+
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:dd")
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "project")

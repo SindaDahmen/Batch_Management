@@ -3,10 +3,10 @@ package com.nordnet.batchs.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nordnet.batchs.dtos.BatchJobExecutionDTO;
@@ -14,7 +14,8 @@ import com.nordnet.batchs.entities.BatchJobExecution;
 import com.nordnet.batchs.services.BatchJobExecutionService;
 
 @RestController
-@RequestMapping(value = "batchJobExecutions")
+@RequestMapping(value = "batchJobExecution")
+@CrossOrigin(origins = "http://localhost:3000")
 public class BatchJobExecutionController
 		extends GenericRestController<BatchJobExecution, BatchJobExecutionDTO, BatchJobExecutionService> {
 
@@ -40,12 +41,20 @@ public class BatchJobExecutionController
 		batchJobExecutionService.updateHistory(id);
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
-	public List<BatchJobExecutionDTO> listAll(@RequestParam(value = "batchId", required = false) Integer batchId) {
+	@CrossOrigin(origins = "http://localhost:3000")
+	@RequestMapping(value = "Executions/{batchId}", method = RequestMethod.GET)
+	public List<BatchJobExecutionDTO> listAll(@PathVariable Integer batchId) {
 		if (batchId == null) {
 			return listAll();
 		}
 		return batchJobExecutionService.listExecutionByBatch(batchId);
+	}
+
+	// @CrossOrigin(origins = "http://localhost:3000")
+	@RequestMapping(value = "lastbatchJobExecutions/{batchId}", method = RequestMethod.GET)
+	public BatchJobExecution getLast(@PathVariable Integer batchId) {
+
+		return batchJobExecutionService.getLastJobExecution(batchId);
 	}
 
 }

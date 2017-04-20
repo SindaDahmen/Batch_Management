@@ -16,4 +16,9 @@ public interface BatchJobExecutionRepository extends CrudRepository<BatchJobExec
 	@Query(" SELECT b FROM BatchJobExecution b  JOIN b.batch ba WHERE ba.id = :batchId ")
 	List<BatchJobExecution> findById(@Param(value = "batchId") Integer batchId);
 
+	@Query(" SELECT b FROM BatchJobExecution b JOIN b.batch ba WHERE ba.id
+	 =:batchId orderBy b.endTime desc")
+
+	BatchJobExecution getLastExecution(@Param(value = "batchId") Integer batchId);
+
 }

@@ -36,6 +36,7 @@ public class Batch implements java.io.Serializable {
 	private String httpVerb;
 	private String description;
 	private String parameters;
+
 	private Set<BatchJobExecution> batchJobExecutions = new HashSet<BatchJobExecution>(0);
 
 	public Batch() {
@@ -55,6 +56,7 @@ public class Batch implements java.io.Serializable {
 		this.httpVerb = httpVerb;
 		this.description = description;
 		this.parameters = parameters;
+
 		this.batchJobExecutions = batchJobExecutions;
 	}
 

@@ -12,9 +12,20 @@ public interface BatchJobExecutionService extends FwkGenericService<BatchJobExec
 	 * @param id
 	 * @return
 	 */
-
 	BatchJobExecution updateHistory(Integer id);
 
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
 	List<BatchJobExecutionDTO> listExecutionByBatch(Integer id);
+
+	/**
+	 * 
+	 * @param batchId
+	 * @return
+	 */
+	BatchJobExecution getLastJobExecution(Integer batchId);
 
 }

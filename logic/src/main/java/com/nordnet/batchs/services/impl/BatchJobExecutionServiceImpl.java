@@ -66,10 +66,13 @@ public class BatchJobExecutionServiceImpl
 		BatchJobExecution result = new BatchJobExecution();
 
 		BeanUtils.copyProperties(dto, result);
+
 		result.setStartTime(new Date());
 
 		if (dto.getBatchDTO() != null) {
+
 			Batch batch = batchService.convertToEntity(dto.getBatchDTO());
+
 			result.setBatch(batch);
 		}
 
@@ -88,13 +91,6 @@ public class BatchJobExecutionServiceImpl
 			batchJobExecutionParams.setBatchJobExecution(result);
 
 		}
-
-		// if (batchjobexecution.getBatchJobInstance() != null) {
-		// BatchJobInstanceDTO batchJobInstanceDTO =
-		// convertBatchJobInstanceToBatchJobInstanceDTO(
-		// batchjobexecution.getBatchJobInstance());
-		// result.setBatchJobInstanceDTO(batchJobInstanceDTO);
-		// }
 
 		return result;
 
@@ -128,17 +124,17 @@ public class BatchJobExecutionServiceImpl
 
 	}
 
-	/**
-	 * 
-	 */
-
 	@Override
 	public BatchJobExecution updateHistory(Integer id) {
-
 		BatchJobExecution batchJobExecution = batchJobExecutionRepository.findOne(id);
 		batchJobExecution.setEndTime(new Date());
 		BatchJobExecution result = batchJobExecutionRepository.save(batchJobExecution);
 		return result;
+	}
+
+	@Override
+	public BatchJobExecution getLastJobExecution(Integer batchId) {
+		return batchJobExecutionRepository.getLastExecution(batchId);
 
 	}
 

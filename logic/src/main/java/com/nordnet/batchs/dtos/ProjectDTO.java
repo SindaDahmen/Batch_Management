@@ -1,5 +1,8 @@
 package com.nordnet.batchs.dtos;
 
+import java.util.Date;
+import java.util.List;
+
 public class ProjectDTO {
 
 	private Integer id;
@@ -12,7 +15,19 @@ public class ProjectDTO {
 
 	private String swaggerUrl;
 
+	private Date createTime;
+
 	private String version;
+
+	private List<BatchDTO> batchdto;
+
+	public List<BatchDTO> getBatchdto() {
+		return batchdto;
+	}
+
+	public void setBatchdto(List<BatchDTO> batchdto) {
+		this.batchdto = batchdto;
+	}
 
 	public ProjectDTO() {
 	}
@@ -63,6 +78,14 @@ public class ProjectDTO {
 
 	public void setVersion(String version) {
 		this.version = version;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
 }
